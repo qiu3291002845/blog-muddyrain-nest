@@ -17,31 +17,44 @@ export class Articles {
 
   @Column('bigint', {
     comment: '发表用户ID',
-    nullable: true,
+    nullable: false,
   })
-  user_id: number;
+  user_id?: number;
+
+  @Column('bigint', {
+    comment: '分类ID',
+    nullable: false,
+  })
+  classify_id?: number;
+
+  @Column('bigint', {
+    comment: '标签ID',
+    nullable: false,
+  })
+  label_id?: number;
 
   @Column('varchar', {
     comment: '文章标题',
-    nullable: true,
+    nullable: false,
   })
   article_title: string;
 
   @Column('varchar', {
     comment: '文章内容',
-    nullable: true,
+    nullable: false,
   })
   article_content: string;
 
   @Column('bigint', {
     comment: '浏览量',
-    nullable: true,
+    nullable: false,
+    default: 0,
   })
   article_views: number;
 
   @Column('bigint', {
     comment: '评论总数量',
-    nullable: true,
+    default: 0,
   })
   article_comment_count: number;
 
@@ -53,8 +66,8 @@ export class Articles {
 
   @CreateDateColumn({
     type: 'datetime',
-    comment: '评论日期',
+    comment: '发表时间',
     nullable: true,
   })
-  comment_date: Date;
+  article_date: Date;
 }
